@@ -29,7 +29,7 @@ class Driver {
     //};
     //return driverPassengers;
     return this.trips().map(function(trip) {
-      return trip.driver();
+      return trip.passenger();
     });
   };
 
