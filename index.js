@@ -19,15 +19,9 @@ class Driver {
   };
 
   passengers() {
-    let driverPassengers = [];
-    for (const trip of this.trips()) {
-      let tripPassenger = store.passengers.find(function(passenger) {
-        return passenger.id === trip.passengerId;
-        }.bind(this)
-      );
-      driverPassengers.push(tripPassenger);
-    };
-    return driverPassengers;
+    return this.trips().map(function(trip) {
+      return trip.passenger();
+    });
   };
 
 };
@@ -47,15 +41,9 @@ class Passenger {
   };
 
   drivers() {
-    let passengerDrivers = [];
-    for (const trip of this.trips()) {
-      let tripDriver = store.drivers.find(function(driver) {
-        return driver.id === trip.driverId;
-        }.bind(this)
-      );
-      passengerDrivers.push(tripDriver);
-    };
-    return passengerDrivers;
+    return this.trips().map(function(trip) {
+      return trip.driver();
+    });
   };
 
 };
